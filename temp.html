@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.active .section-title,
+        .section.active .section-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            /* Keep circles within the section */
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            animation: animateCircle 10s linear infinite;
+
+            /* Randomize circle properties */
+            width: calc(50px + 100px * rand());
+            height: calc(50px + 100px * rand());
+            left: calc(10% + rand() * 80%);
+            top: calc(10% + rand() * 80%);
+            animation-delay: calc(rand() * 5s);
+            /* Add random animation delay */
+            filter: blur(calc(rand() * 5px));
+            /* Add slight blur for depth */
+        }
+
+        @keyframes animateCircle {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translate(50vw, -50vh) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Use a separate animation for some circles moving upwards */
+        .circle:nth-child(2n) {
+            animation: animateCircleUpwards 12s linear infinite;
+        }
+
+        @keyframes animateCircleUpwards {
+            0% {
+                transform: translate(0, 0) scale(0.5);
+                opacity: 0.8;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translate(-50vw, 50vh) scale(2);
+                /* Move upwards */
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="section1" class="section active">
+        <div class="bg-animation">
+            <!-- Remove inline styles and use CSS for better maintainability -->
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="section-content">
+            <h1 class="section-title">Welcome!</h1>
+            <p>This is a simple example of an animated portfolio. Scroll down to see more.</p>
+        </div>
+    </section>
+
+    <section id="section2" class="section">
+        <div class="bg-animation">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="section-content">
+            <h1 class="section-title">About Me</h1>
+            <p>This section can contain your bio, skills, and experience.</p>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top;
+                const sectionHeight = rect.height;
+
+                if (sectionTop < window.innerHeight / 2 && sectionTop + sectionHeight > window.innerHeight / 2) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+        });
+
+        // Function to generate random numbers between 0 and 1
+        function rand() {
+            return Math.random();
+        }
+    </script>
+</body>
+
+</html>
