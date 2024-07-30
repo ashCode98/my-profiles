@@ -56,6 +56,3 @@
 - [devhunt.org](https://devhunt.org/@ashCode98)
 - [hexlet.io](https://hexlet.io/u/user-300c06baba0de4c4)
 - [cses.fi](https://cses.fi/user/262064)
-- []()
-- []()
-- []()
