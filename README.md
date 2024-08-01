@@ -37,6 +37,7 @@
 - [codehelp devchallenge](https://www.codehelp.in/devchallenge/profile)
 - [bigdevsoon](https://app.bigdevsoon.me/profile/ashCode98)
 - [hackattic](https://hackattic.com/u/ashCode98)
+- [enlight.nyc](https://enlight.nyc/user/ashcode98)
 - [bigfrontend.dev](https://bigfrontend.dev/user/ashCode98)
 - [codecrafters.io](https://app.codecrafters.io/users/ashCode98)
 - [devchallenges.io](https://devchallenges.io/profile/119e9a59-f4ab-471c-bf7b-a0051fc7d228)
